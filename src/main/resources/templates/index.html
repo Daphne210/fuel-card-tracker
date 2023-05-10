@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Users Home Page</title>
+</head>
+<body>
+<h1>Users List</h1>
+<a href="/register">Create New User</a>
+<br/><br/>
+<form th:action="@{/index}" method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>User ID</th>
+            <th>User name</th>
+            <th>Full Name</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users} ">
+            <td th:text="${user.userID}">User ID</td>
+            <td th:text="${user.userName}">User name</td>
+            <td th:text="${user.fullName}">Full Name</td>
+            <td th:text="${user.email}">Email</td>
+            <td>
+                <a th:href="@{'/edit/' + ${user.userID}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete/' + ${user.userID}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

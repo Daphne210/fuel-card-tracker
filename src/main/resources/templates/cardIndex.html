@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Cards Home Page</title>
+</head>
+<body>
+<h1>Cards List</h1>
+<a href="/registerCard">Create New Card</a>
+<br/><br/>
+<form th:action="@{/cardIndex}" method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>Card ID</th>
+            <th>Card Number</th>
+            <th>type</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="card : ${card} ">
+            <td th:text="${card.cardID}">User ID</td>
+            <td th:text="${card.cardNo}">User name</td>
+            <td th:text="${card.type}">Full Name</td>
+            <td>
+                <a th:href="@{'/edit/' + ${card.cardID}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete/' + ${card.cardID}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
