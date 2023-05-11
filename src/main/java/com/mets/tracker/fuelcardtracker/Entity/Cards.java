@@ -24,5 +24,35 @@ public class Cards {
     private String type;
 
 
+    public Long getCardID() {
+        return CardID;
+    }
 
+    public void setCardID(Long cardID) {
+        CardID = cardID;
+    }
+
+    public Long getCardNo() {
+        return CardNo;
+    }
+
+    public void setCardNo(Long cardNo) {
+        CardNo = cardNo;
+    }
+
+    public int getPIN() {
+        return PIN;
+    }
+
+    public void setPIN(int PIN) {
+        this.PIN = PIN;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

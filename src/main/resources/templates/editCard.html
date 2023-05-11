@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit page</title>
+</head>
+<body>
+    <h1>Edit Card</h1>
+    <form th:action="@{/saveCard}" method="post" th:object="${cards}">
+        <table>
+            <tr>
+                <td>Card ID:</td>
+                <td>
+                    <input type="number" th:field="*{cardID}" readonly="readonly"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Card No:</td>
+                <td>
+                    <input type="number" th:field="*{cardNo}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>PIN</td>
+                <td>
+                    <input type="password" th:field="*{PIN}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Type:</td>
+                <td>
+                    <input type="text" th:field="*{type}"/>
+                </td>
+            </tr>
+            <tr>
+                <td><button type="submit">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

@@ -19,25 +19,44 @@ public class CardController {
     public ModelAndView registerCard()
     {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("cardRegister.html");
+        modelAndView.setViewName("registerCard.html");
         return modelAndView;
     }
 
     @RequestMapping(value = "/saveCard", method = RequestMethod.POST)
-    public ModelAndView saveCard(@ModelAttribute("card") Cards card, ModelMap model){
+    public ModelAndView saveCard(@ModelAttribute("cards") Cards card, ModelMap model){
         cardServices.saveDetails(card);
-        ModelAndView modelAndView = new ModelAndView("cardIndex.html",model);
+        List<Cards> cards = cardServices.getAllCardDetails();
+        model.addAttribute("cards",cards);
+        ModelAndView modelAndView = new ModelAndView("indexCard.html",model);
         return modelAndView;
     }
 
     @RequestMapping(value="/")
     public ModelAndView indexCard(ModelMap model)
     {
-        List<Cards> card = cardServices.getAllCardDetails();
-        model.addAttribute("card",card);
-
-        return new ModelAndView("/cardIndex.html",model);
+        List<Cards> cards = cardServices.getAllCardDetails();
+        model.addAttribute("cards",cards);
+        return new ModelAndView("indexCard.html",model);
     }
+
+    @RequestMapping(value="/editCard/{cardID}")
+    public ModelAndView showEditCard(@PathVariable(name = "cardID") Long cardID, ModelMap model){
+        Cards cards = cardServices.getCardDetails(cardID);
+        ModelAndView modelAndView = new ModelAndView("editCard.html", model);
+        model.addAttribute("cards", cards);
+        return modelAndView;
+    }
+
+    @RequestMapping("/deleteCard/{cardID}")
+    public ModelAndView deleteCard(@PathVariable Long cardID, ModelMap model){
+        cardServices.deleteDetails(cardID);
+        List<Cards> cards = cardServices.getAllCardDetails();
+        model.addAttribute("cards",cards);
+        ModelAndView modelAndView = new ModelAndView("indexCard.html", model);
+        return modelAndView;
+    }
+
 
     @PostMapping("/addCards")
     public Cards addNewCard(@RequestBody Cards card){

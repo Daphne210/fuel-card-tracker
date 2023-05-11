@@ -25,9 +25,10 @@
             <td th:text="${user.fullName}">Full Name</td>
             <td th:text="${user.email}">Email</td>
             <td>
-                <a th:href="@{'/edit/' + ${user.userID}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/delete/' + ${user.userID}}">Delete</a>
+                <a th:href="@{'/editUser/' + ${user.userID}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/deleteUser/' + ${user.userID}}">Delete</a>
             </td>
         </tr>
         </tbody>

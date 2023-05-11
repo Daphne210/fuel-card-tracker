@@ -18,14 +18,15 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="card : ${card} ">
+        <tr th:each="card : ${cards} ">
             <td th:text="${card.cardID}">User ID</td>
             <td th:text="${card.cardNo}">User name</td>
             <td th:text="${card.type}">Full Name</td>
             <td>
-                <a th:href="@{'/edit/' + ${card.cardID}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/delete/' + ${card.cardID}}">Delete</a>
+                <a th:href="@{'/editCard/' + ${card.cardID}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/deleteCard/' + ${card.cardID}}">Delete</a>
             </td>
         </tr>
         </tbody>

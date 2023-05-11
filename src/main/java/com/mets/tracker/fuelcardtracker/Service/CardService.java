@@ -4,8 +4,8 @@ import com.mets.tracker.fuelcardtracker.Entity.Cards;
 import com.mets.tracker.fuelcardtracker.Repository.CardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+
 
 @Service
 public class CardService {
@@ -35,6 +35,5 @@ public class CardService {
             return "ID does not exist";
         }
     }
-
 
 }

@@ -19,14 +19,16 @@ public class UserController {
     public ModelAndView register()
     {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("register.html");
+        modelAndView.setViewName("registerUser.html");
         return modelAndView;
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public ModelAndView save(@ModelAttribute("user") User user, ModelMap model){
         userService.saveDetails(user);
-        ModelAndView modelAndView = new ModelAndView("login.html",model);
+        List<User> users = userService.getAllUserDetails();
+        model.addAttribute("users",users);
+        ModelAndView modelAndView = new ModelAndView("indexUser.html",model);
         return modelAndView;
     }
 
@@ -35,8 +37,24 @@ public class UserController {
     {
         List<User> users = userService.getAllUserDetails();
         model.addAttribute("users",users);
+        return new ModelAndView("/indexUser.html",model);
+    }
 
-        return new ModelAndView("/index.html",model);
+    @RequestMapping(value="/editUser/{userID}")
+    public ModelAndView showEditUser(@PathVariable(name = "userID") Long userID, ModelMap model){
+        User users = userService.getUserDetails(userID);
+        ModelAndView modelAndView = new ModelAndView("editUser.html", model);
+        model.addAttribute("users", users);
+        return modelAndView;
+    }
+
+    @RequestMapping("/deleteUser/{userID}")
+    public ModelAndView deleteUser(@PathVariable Long userID, ModelMap model){
+        userService.deleteDetails(userID);
+        List<User> users = userService.getAllUserDetails();
+        model.addAttribute("users",users);
+        ModelAndView modelAndView = new ModelAndView("indexUser.html", model);
+        return modelAndView;
     }
 
     @GetMapping("/getUser")
