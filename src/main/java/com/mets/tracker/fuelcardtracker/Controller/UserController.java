@@ -39,6 +39,14 @@ public class UserController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/reset", method = RequestMethod.GET)
+    public ModelAndView reset()
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("forgot-password.html");
+        return modelAndView;
+    }
+
     @RequestMapping(value="/index")
     public ModelAndView index(ModelMap model)
     {
