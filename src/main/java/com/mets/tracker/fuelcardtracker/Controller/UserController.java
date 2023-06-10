@@ -15,6 +15,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/home")
+    public ModelAndView login(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("loginUser.html");
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView register()
     {
@@ -32,7 +39,15 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/home")
+    @RequestMapping(value = "/reset", method = RequestMethod.GET)
+    public ModelAndView reset()
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("forgot-password.html");
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/index")
     public ModelAndView index(ModelMap model)
     {
         List<User> users = userService.getAllUserDetails();
