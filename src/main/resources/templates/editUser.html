@@ -1,47 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit User page</title>
+    <title>Title</title>
 </head>
 <body>
-<h1>Edit User Details</h1>
-<form th:action="@{/save}" method="post" th:object="${users}">
-    <table>
-        <tr>
-            <td>User ID:</td>
-            <td>
-                <input type="number" th:field="*{userID}" readonly="readonly"/>
-            </td>
-        </tr>
-        <tr>
-            <td>Full Name:</td>
-            <td>
-                <input type="text" th:field="*{fullName}"/>
-            </td>
-        </tr>
-        <tr>
-            <td>User Name:</td>
-            <td>
-                <input type="text" th:field="*{userName}"/>
-            </td>
-        </tr>
-        <tr>
-            <td>Email:</td>
-            <td>
-                <input type="text" th:field="*{email}"/>
-            </td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td>
-                <input type="password" th:field="*{password}"/>
-            </td>
-        </tr>
-        <tr>
-            <td><button type="submit">Submit</button> </td>
-        </tr>
-    </table>
-</form>
+
 </body>
 </html>

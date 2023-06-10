@@ -17,16 +17,12 @@ public class User {
     private Long userID;
     @Column(name = "FullName")
     private String fullName;
-    @Column(name = "Username", unique = true)
+    @Column(name = "Username")
     private String userName;
-    @Column(name = "Email", unique = true, length = 45)
+    @Column(name = "Email")
     private String email;
     @Column(name = "Password")
     private String password;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "card_id")
-    private Cards cards;
 
     public Long getUserID() {
         return userID;
