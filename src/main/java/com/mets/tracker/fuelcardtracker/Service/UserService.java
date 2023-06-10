@@ -13,14 +13,8 @@ public class UserService {
     private UserRepository userRepository;
 
     public User saveDetails(User user) {
-        if (userRepository.findByEmail(user.getEmail()) != null){
-            throw new RuntimeException("Record already exists");
-
-        } else {
-            userRepository.save(user);
-            return user;
-        }
-
+        userRepository.save(user);
+        return user;
     }
 
     public List<User> getAllUserDetails() {
@@ -37,7 +31,7 @@ public class UserService {
             userRepository.deleteById(userID);
             return "Deleted User with ID: " + userID;
         } else {
-            return "No such user in the database";
+            return "User ID does not exist";
         }
     }
 
