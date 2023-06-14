@@ -15,12 +15,10 @@ public class UserService {
     public User saveDetails(User user) {
         if (userRepository.findByEmail(user.getEmail()) != null){
             throw new RuntimeException("Record already exists");
-
         } else {
             userRepository.save(user);
             return user;
         }
-
     }
 
     public List<User> getAllUserDetails() {

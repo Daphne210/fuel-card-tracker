@@ -35,7 +35,7 @@ public class UserController {
         userService.saveDetails(user);
         List<User> users = userService.getAllUserDetails();
         model.addAttribute("users",users);
-        ModelAndView modelAndView = new ModelAndView("indexUser.html",model);
+        ModelAndView modelAndView = new ModelAndView("loginUser.html",model);
         return modelAndView;
     }
 
